@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Maze</title>
+    <link rel="stylesheet" type="text/css" href="css/maze.css" media="screen" />
+    <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="js/maze.js"></script>
+    <script type="text/javascript" src="js/board.js"></script>
+    <script type="text/javascript" src="js/creator.js"></script>
+    <script type="text/javascript" src="js/solver.js"></script>
+
+  </head>
+  <body>
+    <h1>MAZE</h1>
+    <p>
+      board dimensions: <input type="text" id='x_dimension' value='75'> x <input type="text" id='y_dimension' value='50'> <button class='reset_button' onclick="resetBoard();">reset board</button>
+    </p>
+    <div class='board'></div>
+    <p>
+      <button id='create_button' onclick="createMaze();">Create Maze</button>
+      <button id='solve_button' onclick="solveMaze();" disabled=true>Solve</button>
+    </p>
+    <p><span id='solve_status'>unsolved</span></p>
+    <ol id='steps'></ol>
+    <script>
+      var numRows
+        , numCols
+        , iterationNumber
+        , currentStats;
+
+      resetBoard();
+
+      function resetBoard() {
+        board.reset([]);
+      }
+
+      function solveMaze() {
+        solve();
+        $('#solve_button').prop("disabled", true);
+      }
+
+      function createMaze() {
+        $('#create_button').prop("disabled", true);
+        board.reset([]);
+        startMazeMapping();
+        $('#create_button').prop("disabled", false);
+        $('#solve_button').prop("disabled", false);
+      }
+
+    </script>
+  </body>
+</html>
