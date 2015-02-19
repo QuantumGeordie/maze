@@ -1,14 +1,19 @@
 var DISPLAY_STEPS = false;
+var end_point = {x: 0, y: 0};
 
 function solve() {
-  var x = 0
-    , y = 0;
+  var start_id = $('.start').attr('id').split('_')
+    , end_id   = $('.end').attr('id').split('_')
+    , x = parseInt(start_id[0])
+    , y = parseInt(start_id[1]);
+
+  end_point = { x : end_id[0], y : end_id[1] };
+
+  printStep('starting point: (' + x + ', ' + y + ')');
+  printStep('starting point: (' + end_point['x'] + ', ' + end_point['y'] + ')');
 
   $('#solve_status').text('unsolved');
   findNextBranch(x, y);
-
-  $('#0_0').addClass('end_point').removeClass('alive');
-  $('#' + (numCols - 1) + '_' + (numRows - 1)).addClass('end_point').removeClass('alive');
 }
 
 function findNextBranch(x, y) {
@@ -17,7 +22,7 @@ function findNextBranch(x, y) {
 
   var possible = [];
 
-  if(!((x == numCols - 1) && (y == numRows -1))){
+  if(!((x == parseInt(end_point['x'])) && (y == parseInt(end_point['y'])))){
     if((wallValue & E) > 0 && !alreadyVisited(x + 1, y) && !deadEnd(x + 1, y)){
       possible.push({x: x + 1, y: y});
       paths++;
