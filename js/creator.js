@@ -13,6 +13,9 @@ function startMazeMapping() {
   carvePassagesFrom(0, 0);
   drawBorders();
   clearSteps();
+
+  $('#0_0').addClass('start');
+  $('#' + (numCols - 1) + '_' + (numRows - 1)).addClass('end');
 }
 
 function drawBorders() {

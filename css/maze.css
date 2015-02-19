@@ -107,3 +107,10 @@ input[type="text"] {
     width: 35px;
     margin-bottom: 10px;
 }
+
+.start {
+  background-color: #f00;
+}
+.end {
+  background-color: #00f;
+}
