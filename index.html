@@ -8,6 +8,7 @@
     <script type="text/javascript" src="js/board.js"></script>
     <script type="text/javascript" src="js/creator.js"></script>
     <script type="text/javascript" src="js/solver.js"></script>
+    <script type="text/javascript" src="js/stepper.js"></script>
 
   </head>
   <body>
@@ -18,9 +19,11 @@
     <div class='board'></div>
     <p>
       <button id='create_button' onclick="createMaze();">Create Maze</button>
+      <button id='step_button' onclick="stepBoard();" disabled=true>Slow Step Board</button>
       <button id='solve_button' onclick="solveMaze();" disabled=true>Solve</button>
     </p>
     <p><span id='solve_status'>unsolved</span></p>
+
     <ol id='steps'></ol>
     <script>
       var numRows
@@ -34,9 +37,14 @@
         board.reset([]);
       }
 
+      function stepBoard() {
+        slowStep();
+      }
+
       function solveMaze() {
         solve();
         $('#solve_button').prop("disabled", true);
+        $('#step_button').prop("disabled", true);
       }
 
       function createMaze() {
@@ -45,6 +53,7 @@
         startMazeMapping();
         $('#create_button').prop("disabled", false);
         $('#solve_button').prop("disabled", false);
+        $('#step_button').prop("disabled", false);
       }
 
     </script>
