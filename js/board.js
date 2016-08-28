@@ -41,7 +41,7 @@ var board = {
       cell.addClass('start');
     }
 
-    if(starts == 1 && ends === 0) {
+    if(starts === 1 && ends === 0) {
       cell.addClass('end');
     }
   }

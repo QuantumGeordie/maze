@@ -51,7 +51,7 @@ function oneStep(x, y) {
 
     $('#' + x + '_' + y).addClass('alive');
 
-    if(paths == 0){
+    if(paths === 0){
       keepGoing = false;
       goBack = true;
     }
@@ -104,7 +104,7 @@ function backStep(x, y) {
     possible.push({x: x, y: y - 1});
   }
 
-  if(paths == 1) {
+  if(paths === 1) {
     markDeadEnd(x, y);
     goBack = true;
     goForward = false;
